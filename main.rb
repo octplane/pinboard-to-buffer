@@ -23,7 +23,7 @@ def save_posted
     @posted = nil
   end
 end
-			
+
 def profile_ids
   @profiles_id ||= begin
     if ENV['BUFFER_PROFILE_IDS'].nil?
@@ -45,7 +45,7 @@ end
 
 
 pinboard = Pinboard::Client.new(:token => ENV['PINBOARD_TOKEN'])
-posts = pinboard.posts(fromdt: 5.days.ago,:tag => '@post')
+posts = pinboard.posts(fromdt: 5.days.ago,:tag => ENV['PINBOARD_TAG_FILTER'])
 
 if posts.count > 0
   posts.each do |post|
